@@ -1,8 +1,7 @@
 import { Application } from "express";
-import app from "..";
-
+import { CouponControllers } from "../controllers/coupon";
+import { CartControllers } from "../controllers/cart";
 export default (app: Application) => {
-    app.get("/cart", () => {
-        console.log("cart");
-    })
+    app.get("/cart", CartControllers.getCartContent);
+    app.get("/coupon", CouponControllers.getCoupons);
 }
