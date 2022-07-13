@@ -1,0 +1,1 @@
+# a script to run migratings, database seeding and other configuration after building the sources
