@@ -49,16 +49,16 @@ function parseCoupon(couponCode: string, totalPrice: number, totalItems: number)
                 if (totalPrice > 1000) {
                     //calculate the discounted amount
                     const fixedDiscount = totalPrice - 10;
-                    const discountedPrice = Math.round(totalPrice - (fixedDiscount + (0.1 * totalPrice)));
+                    const percentageDiscount = ((totalPrice * 10) / 100).toFixed(2);
+                    const discount = fixedDiscount + percentageDiscount;
+                    const discountedPrice = totalPrice - Number(discount);
                     return {
                         success: true,
-                        message: "You have been successfully discounted by $10",
+                        message: `You have been successfully discounted by ${discount}`,
                         initialPrice: totalPrice,
-                        discountedPrice: totalPrice - discountedPrice,
-                        discount: discountedPrice
+                        discountedPrice,
+                        discount
                     }
-
-
                 }
 
             }
@@ -74,13 +74,13 @@ function parseCoupon(couponCode: string, totalPrice: number, totalItems: number)
                 if ((totalPrice > 200) && (totalItems >= 3)) {
                     //calculate the discounted amount
                     const discount = ((0.1 * totalPrice) > (totalPrice - 10)) ? (0.1 * totalPrice) : (totalPrice - 10);
-                    const discountedPrice = Math.round(totalPrice - discount)
+                    const discountedPrice = (totalPrice - discount).toFixed(2)
                     return {
                         success: true,
                         message: `You have been successfully discounted by $${discount}`,
                         initialPrice: totalPrice,
                         discountedPrice,
-                        discount: Math.round(discount),
+                        discount: (discount).toFixed(2),
                     }
 
 
@@ -116,16 +116,14 @@ function parseCoupon(couponCode: string, totalPrice: number, totalItems: number)
                 if ((totalPrice > 50) && (totalItems >= 1)) {
                     //calculate the discounted amount
                     const discount = (totalPrice - 10);
-                    const discountedPrice = Math.round(totalPrice - discount)
+                    const discountedPrice = (totalPrice - discount).toFixed(2);
                     return {
                         success: true,
                         message: `You have been successfully discounted by $${discount}`,
                         initialPrice: totalPrice,
                         discountedPrice,
-                        discount: Math.round(discount),
+                        discount: (discount).toFixed(2),
                     }
-
-
                 }
             }
             break;
