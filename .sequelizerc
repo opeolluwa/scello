@@ -1,0 +1,9 @@
+const path = require('path');
+const dotenv = require('dotenv');
+dotenv.config();
+
+module.exports = {
+    env: 'development',
+    // dialect:"sqlite",
+    "config": process.env.NODE_ENV == "production" ? path.resolve(__dirname, "dist", "config", "database.config.js") : path.resolve(__dirname, "dist", "config", "database.config.js")
+}

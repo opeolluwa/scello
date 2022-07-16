@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 import express, { Express, Request, Response } from "express";
 import cors from "cors";
 import routes from "./routes";
-
+import DataStore from "./config/database.config"
 
 const app: Express = express();
 const PORT = process.env.PORT || 3457;
@@ -12,6 +12,14 @@ app.use(express.json());
 app.use(cors());
 dotenv.config();
 console.log("Parsed Environment Variables");
+
+//connect with the database
+try {
+    DataStore.authenticate();
+    console.log('Connection has been established successfully.');
+} catch (error) {
+    console.error('Unable to connect to the database:', error);
+}
 
 //mount the routes
 routes(app);
