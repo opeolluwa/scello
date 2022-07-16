@@ -30,6 +30,15 @@ export class CouponControllers {
         }
 
         let response = parseCoupon(couponCode, totalPrice, products.length);
+        if (!response) {
+            return res.send({
+                success: false,
+                message: "you are not eligible for any discount",
+                initialPrice: totalPrice,
+                discountedPrice: 0,
+                discount: 0,
+            });
+        }
         return res.send(response);
     }
 }
