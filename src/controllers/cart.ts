@@ -21,7 +21,7 @@ export class CartControllers {
                 productDescription: product.productDescription,
             }
         })
-
+        //return the cart content
         return res.send({
             totalPrice: amountPayable,
             currency: "USD",
