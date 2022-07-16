@@ -16,7 +16,7 @@ console.log("Parsed Environment Variables");
 //connect with the database
 try {
     DataStore.authenticate();
-    DataStore.sync({ force: true,});
+    // DataStore.sync({ force: true,});
     console.log('Connection has been established successfully.');
 } catch (error) {
     console.error('Unable to connect to the database:', error);
