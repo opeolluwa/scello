@@ -30,6 +30,6 @@ Product.init({
     // Other model options go here
     sequelize, // We need to pass the connection instance, defined in the config file
     modelName: "Products", // We need to choose the model name
-    tableName: "Products", // We need to choose the table name
+    tableName: "products", // We need to choose the table name
 
 });
