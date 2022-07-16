@@ -1,6 +1,12 @@
 const { DataTypes, Model } = require('sequelize');
 import sequelize from "../config/database.config"
-
+export interface ProductInterface {
+    productId: number,
+    productName: string,
+    productPrice: number | string,
+    productDescription: string,
+    currency: string,
+}
 
 export class Product extends Model { }
 Product.init({
@@ -20,11 +26,15 @@ Product.init({
         type: DataTypes.BOOLEAN,
         default: false,
     },
+
     productPrice: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-
+    currency: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
 
 }, {
     // Other model options go here
